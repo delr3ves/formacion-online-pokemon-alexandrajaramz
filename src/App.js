@@ -1,5 +1,6 @@
 import React from 'react';
 import { fetchData } from './service/fetch';
+import Filters from './components/Filters';
 import PokemonList from './components/PokemonList';
 
 class App extends React.Component {
@@ -7,8 +8,12 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      pokemons: []
+      pokemons: [],
+      searchedName: '',
+      loading: true
     }
+
+    this.searchName = this.searchName.bind(this);
   }
 
   componentDidMount() {
@@ -33,10 +38,18 @@ class App extends React.Component {
               types: types
             }
             this.setState({
-              pokemons: [...this.state.pokemons, pokemon]
+              pokemons: [...this.state.pokemons, pokemon],
+              loading: false
             })
           })
       }
+    })
+  }
+
+  searchName(event) {
+    const inputName = event.currentTarget.value;
+    this.setState({
+      searchedName: inputName
     })
   }
 
@@ -45,10 +58,13 @@ class App extends React.Component {
       <div className="app">
         <header className="app__header">
           <h1 className="header-title">Pokedex</h1>
+          <Filters searchName={this.searchName}/>
         </header>
         <main className="app__main">
           <PokemonList
-            pokemons = {this.state.pokemons}
+            pokemons={this.state.pokemons}
+            searchedName={this.state.searchedName}
+            loading={this.state.loading}
           />
         </main>
         <footer className="app__footer">
