@@ -1,0 +1,14 @@
+.form-name__input {
+  max-width: 300px;
+  height: 30px;
+  margin: 20px;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid #000;
+  background-color: transparent;
+  font-size: 18px;  
+}
+
+.form-name__input::placeholder {
+  color: black;
+} 

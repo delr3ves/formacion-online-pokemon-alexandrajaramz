@@ -1,5 +1,6 @@
 import React from 'react';
 import PokemonCard from './PokemonCard';
+import '../styles/PokemonList.scss';
 
 const PokemonList = props => {
   const {pokemons, searchedName, loading} = props;
@@ -8,13 +9,17 @@ const PokemonList = props => {
   
   if (loading) {
     return (
-      <p>Loading Pokémons...</p>
+      <div className="main-loading">
+        <p>Loading Pokémons...</p>
+      </div>
     );
   } 
 
   if (!filteredPokemons.length) {
     return (
-      <p>No results.</p>
+      <div className="main-nores">
+        <p>No results.</p>
+      </div>
     );
   } 
   

@@ -2,6 +2,7 @@ import React from 'react';
 import { fetchData } from './service/fetch';
 import Filters from './components/Filters';
 import PokemonList from './components/PokemonList';
+import './styles/App.scss';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getPokemons();
+    //this.getPokemons();
   }
 
   getPokemons() {

@@ -1,0 +1,42 @@
+.app {
+  min-height: 100vh;
+  text-align: center;
+  font-size: 18px; 
+  background: linear-gradient(-220deg,  #680408, #8c5959, #A6A6A6, #8C8C8C, #737373);
+  background-size: 200% 200%;
+  animation: gradientBG 15s ease infinite;
+  
+  @keyframes gradientBG {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+
+.app__header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-title {
+  background-image: url(../images/pokemon-logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 300px;
+  height: 1px;
+  overflow: hidden;
+  padding-top: 250px;
+}
+
+.app__footer {
+  padding: 1em;
+}
