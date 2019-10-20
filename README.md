@@ -1,14 +1,15 @@
-# Pokedex | ## Adalab's online training E.1
-![Pokemon](./src/images/pokemon-logo.png)
+# Pokedex  
+## Adalab's online training E.1
+<img src="./src/images/pokemon-logo.png" alt="Pokemon logo" width="320px">
 
 ### ⚛️ What's this?
 
 This is a simple web app created for the online training in Adalab's bootcamp. It's developed by [Alexandra Jara](https://github.com/alexandrajaramz), using React.
 
 It's a list of Pokemons (like [pokedex.org](http://pokedex.org)), and the requested features were:
--List of the 25 first Pokemon using [pokeapi.co](https://pokeapi.co/). 
--Show the image, name, number and type or types of each Pokemon (double fetch).
--Filter Pokemons by name.
+- List of the 25 first Pokemon using [pokeapi.co](https://pokeapi.co/). 
+- Show the image, name, number and type or types of each Pokemon (double fetch).
+- Filter Pokemons by name.
 
 ### ⚙️ How to use 
 
@@ -23,4 +24,4 @@ Open [https://localhost:3000](https://localhost:3000) to view it in the browser.
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 ### ⚡️ Have fun!
-![Pikachu](./src/images/pikachu.gif)
+<img src="./src/images/pikachu.gif" alt="Happy Pikachu :D" width="300px">
