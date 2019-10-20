@@ -15,7 +15,7 @@ It's a list of Pokemons (like [pokedex.org](http://pokedex.org)), and the reques
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-You need to install Node-sass `npm install --save node-sass` and PropTypes `npm install --save prop-types` to work with this project.
+You need to install Node-sass `npm install --save node-sass` to work with this project.
 
 Then, you can run `npm start` to use the app in the development mode. 
 
