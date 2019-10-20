@@ -10,7 +10,7 @@ const Filters = props => {
           type="text" 
           name="form-name"
           className="form-name__input" 
-          placeholder="Find a Pokémon" 
+          placeholder="Find a Pokémon..." 
           onChange={searchName}   
         />
       </label>

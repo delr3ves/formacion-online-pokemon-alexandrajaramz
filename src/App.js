@@ -18,7 +18,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    //this.getPokemons();
+    this.getPokemons();
   }
 
   getPokemons() {
@@ -69,7 +69,7 @@ class App extends React.Component {
           />
         </main>
         <footer className="app__footer">
-          <p className="footer-text">Developed by Alexandra Jara &copy; 2019</p>
+          <p className="footer-text">Developed by <a className="footer-github" href="https://github.com/alexandrajaramz" target="_blank" rel="noopener noreferrer">Alexandra Jara</a> &copy; 2019</p>
         </footer>
       </div>
     );
