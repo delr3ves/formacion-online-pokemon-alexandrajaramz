@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { fetchSpecie } from '../service/fetchSpecie';
 import '../styles/PokeDetail.scss';
 
 const PokeDetail = (props) => {
@@ -7,8 +8,21 @@ const PokeDetail = (props) => {
     routerProps,
     pokemons
   } = props;
+
   const clickedName = routerProps.match.params.name;
   const clickedPokemon = pokemons.filter(item => {return(item.name === clickedName)});
+  //console.log(clickedPokemon[0].id);
+  const ID = clickedPokemon[0].id;
+  let evolvesFrom = []
+  fetchSpecie(ID)
+  .then(species => {
+    evolvesFrom.push(species.evolves_from_species.name);
+    //evolvesFrom = species.evolves_from_species.name;
+    console.log('dentro', evolvesFrom);
+    //evolvesFrom = species.evolves_from_species;
+  })
+
+  console.log('fuera', evolvesFrom);
 
   if (clickedPokemon[0]){
     return (
@@ -24,6 +38,7 @@ const PokeDetail = (props) => {
               <h3>Profile</h3>
               <p className="detail__info-status info-p">{`Height: ${clickedPokemon[0].height}`}</p>
               <p className="detail__info-species info-p">{`Weight: ${clickedPokemon[0].weight}`}</p>
+{/*               <p>{`Evolution of ${evolvesFrom.name}`}</p> */}
               <div>
                 <h4>Abilities:</h4>
                 <ul className="info__types">

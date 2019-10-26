@@ -31,7 +31,6 @@ class App extends React.Component {
         fetch(item.url)
           .then(response => response.json())
           .then(result => {
-            console.log(result);
             const types = [];
             for (let item of result.types) {
               types.push(item.type.name);
@@ -40,7 +39,6 @@ class App extends React.Component {
             for (let item of result.abilities) {
               abilities.push(item.ability.name);
             }
-            const evolutionUrl = result.species;
             const pokemon = {
               image: result.sprites.front_default,
               imageBack: result.sprites.back_default,
@@ -50,7 +48,6 @@ class App extends React.Component {
               height: result.height,
               weight: result.weight,
               abilities: abilities,
-              evolution: evolutionUrl
             }
             this.setState({
               pokemons: [...this.state.pokemons, pokemon],
@@ -81,7 +78,7 @@ class App extends React.Component {
               loading={this.state.loading}
             />
           } />
-          <Route exact path="/pokemon/:name" render={(routerProps) => 
+          <Route path="/pokemon/:name" render={(routerProps) => 
             <PokeDetail
               routerProps={routerProps}
               pokemons={this.state.pokemons}
