@@ -1,6 +1,7 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import { fetchData } from './service/fetch';
+//import { fetchSpecie } from './service/fetchSpecie';
 import Header from './components/Header';
 import Home from './components/Home';
 import PokeDetail from './components/PokeDetail';
@@ -14,7 +15,7 @@ class App extends React.Component {
     this.state = {
       pokemons: [],
       searchedName: '',
-      loading: true
+      loading: true,
     }
 
     this.searchName = this.searchName.bind(this);
@@ -39,6 +40,13 @@ class App extends React.Component {
             for (let item of result.abilities) {
               abilities.push(item.ability.name);
             }
+
+            //aquí queria hacer el otro fetch para meter las evoluciones directamente en el objeto pokemon que paso al state y pasarlo todo por props, accediendo a species.url, pero dice que species no es iterable, al loguear name y url mete una letra por línea (asincronía?)
+            for (let item of result.species.url) {
+              console.log(item);
+            }
+
+
             const pokemon = {
               image: result.sprites.front_default,
               imageBack: result.sprites.back_default,
@@ -56,6 +64,7 @@ class App extends React.Component {
           })
       }
     })
+
   }
 
   searchName(event) {

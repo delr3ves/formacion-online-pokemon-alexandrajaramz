@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import { fetchSpecie } from '../service/fetchSpecie';
 import '../styles/PokeDetail.scss';
 
 const PokeDetail = (props) => {
@@ -18,17 +17,18 @@ const PokeDetail = (props) => {
   const ID = clickedPokemon[0].id;
   console.log(ID);
   //terminamos el fetch e intentamos guardar el dato que existe dentro del then en el array
-  let evolvesFrom = []
+/*   let evolvesFrom = []
   fetchSpecie(ID)
   .then(species => {
     evolvesFrom.push(species.evolves_from_species.name);
     console.log('dentro', evolvesFrom);
   })
-  console.log('fuera', evolvesFrom);
+  console.log('fuera', evolvesFrom); */
 
   if (clickedPokemon[0]){
     return (
         <section className="detail__section">       
+          {/* Si he entrado en un detalle filtrando el pokemon, al volver a la lista solo muestra ese pokemon */}
           <Link className="detail__back" to="/">&lt; Volver</Link>
           <div className="detail__wrapper-content">    
             <h2 className="detail__name">{clickedPokemon[0].name}</h2>
@@ -37,16 +37,16 @@ const PokeDetail = (props) => {
               <img className="detail__img" src={clickedPokemon[0].imageBack} alt={`Imagen trasera de ${clickedPokemon[0].name}`}/>
             </div>
             <div className="detail__info">
-              <h3>Profile</h3>
-              <p className="detail__info-status info-p">{`Height: ${clickedPokemon[0].height}`}</p>
-              <p className="detail__info-species info-p">{`Weight: ${clickedPokemon[0].weight}`}</p>
+              <h3 className="info-profile-title">Profile</h3>
+              <p className="detail__info-p">{`Height: ${clickedPokemon[0].height}`}</p>
+              <p className="detail__info-p">{`Weight: ${clickedPokemon[0].weight}`}</p>
 {/*               <p>{`Evolution of ${evolvesFrom.name}`}</p> */}
-              <div>
-                <h4>Abilities:</h4>
-                <ul className="info__types">
+              <div className="info__abilities">
+                <h4 className="info-abilities-title">Abilities:</h4>
+                <ul className="abilities-list">
                   {clickedPokemon[0].abilities.map((ability, index) => {
                     return (
-                      <li key={index}>
+                      <li className="abilities-element" key={index}>
                         {ability}
                       </li>
                     );

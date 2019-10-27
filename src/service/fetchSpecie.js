@@ -1,5 +1,8 @@
-const ENDPOINT  = 'https://pokeapi.co/api/v2/pokemon-species/';
+/* const ENDPOINT  = 'https://pokeapi.co/api/v2/pokemon-species/?limit=25';
 
-const fetchSpecie = (pokemonId) => fetch(ENDPOINT+pokemonId).then(response => response.json());
+const fetchSpecie = () => {
+  fetch(ENDPOINT)
+    .then(response => response.json())
+}
 
-export { fetchSpecie }
+export { fetchSpecie }; */
