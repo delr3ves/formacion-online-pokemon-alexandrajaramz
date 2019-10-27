@@ -9,19 +9,21 @@ const PokeDetail = (props) => {
     pokemons
   } = props;
 
+  //guardamos el identificador de la ruta de las routerProps
   const clickedName = routerProps.match.params.name;
+  //filtramos el array con todos los pokemon por nombre para que coincida con el de la ruta
   const clickedPokemon = pokemons.filter(item => {return(item.name === clickedName)});
-  //console.log(clickedPokemon[0].id);
+  console.log('pokemon click', clickedPokemon[0].name);
+  //guardamos la id del pokemon clickado para usarla en la petición de evoluciones
   const ID = clickedPokemon[0].id;
+  console.log(ID);
+  //terminamos el fetch e intentamos guardar el dato que existe dentro del then en el array
   let evolvesFrom = []
   fetchSpecie(ID)
   .then(species => {
     evolvesFrom.push(species.evolves_from_species.name);
-    //evolvesFrom = species.evolves_from_species.name;
     console.log('dentro', evolvesFrom);
-    //evolvesFrom = species.evolves_from_species;
   })
-
   console.log('fuera', evolvesFrom);
 
   if (clickedPokemon[0]){
