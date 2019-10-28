@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
-import { findAllPokemons } from './service/fetch';
+import findAllPokemons from './service/fetch';
 //import { fetchSpecie } from './service/fetchSpecie';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -36,7 +36,7 @@ class App extends React.Component {
   getPokemons() {
     findAllPokemons(this.notifyPokemonIsLoaded);
   }
-  
+
   searchName(event) {
     const inputName = event.currentTarget.value;
     this.setState({
