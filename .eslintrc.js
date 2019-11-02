@@ -23,5 +23,6 @@ module.exports = {
     'jest'
   ],
   rules: {
+    "class-methods-use-this":  ["off"]
   }
 }

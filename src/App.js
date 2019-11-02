@@ -16,7 +16,7 @@ class App extends React.Component {
       pokemons: [],
       searchedName: '',
       loading: true,
-    }
+    };
 
     this.searchName = this.searchName.bind(this);
     this.notifyPokemonIsLoaded = this.notifyPokemonIsLoaded.bind(this);
@@ -28,7 +28,7 @@ class App extends React.Component {
 
   notifyPokemonIsLoaded(pokemon) {
     this.setState({
-      pokemons: [...this.state.pokemons, pokemon],
+      pokemons: this.sortPokemons([...this.state.pokemons, pokemon]),
       loading: false
     });
   }
@@ -41,7 +41,11 @@ class App extends React.Component {
     const inputName = event.currentTarget.value;
     this.setState({
       searchedName: inputName
-    })
+    });
+  }
+
+  sortPokemons(pokemons) {
+    return pokemons.sort((a, b) => parseFloat(a.id) - parseFloat(b.id));
   }
 
   render() {
