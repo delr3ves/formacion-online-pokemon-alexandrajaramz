@@ -3,10 +3,8 @@ import PokemonCard from './PokemonCard';
 import '../styles/PokemonList.scss';
 
 const PokemonList = props => {
-  const {pokemons, searchedName, loading} = props;
-  const filteredPokemons = pokemons
-  .filter(item => item.name.toUpperCase().includes(searchedName.toUpperCase()))
-  .sort((a, b) => parseFloat(a.id) - parseFloat(b.id));;
+  const {pokemons, searchedName, loading, searchPokemon} = props;
+  const filteredPokemons = searchPokemon.filterByName(searchedName, pokemons);
   
   if (loading) {
     return (
