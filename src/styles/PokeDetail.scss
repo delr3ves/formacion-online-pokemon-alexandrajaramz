@@ -1,0 +1,50 @@
+.detail__section {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail__wrapper-content {
+  margin: 1em 0 1em;
+  width: 300px;
+  background-color: #dfdbdb;
+  border: 1px solid #8C8C8C;
+  border-radius: 3px;
+  box-shadow: 10px rgb(0, 0, 0);
+}
+
+.detail__name {
+  text-transform: capitalize;
+  background-color: #737373;
+}
+
+.detail__info {
+  padding: 1em;
+}
+
+.info-profile-title {
+  background-color: #A6A6A6;
+}
+
+.detail__info-p {
+  padding: 5px;
+}
+
+.info-abilities-title {
+  background-color: #A6A6A6;
+}
+
+.abilities-list {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+.abilities-element {
+  margin: 2px;
+  padding: 5px;
+  border: 1px solid #8C8C8C;
+  border-radius: 3px;
+  text-transform: uppercase;
+}

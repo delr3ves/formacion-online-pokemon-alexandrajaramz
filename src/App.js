@@ -1,7 +1,11 @@
 import React from 'react';
-import { fetchData } from './service/fetch';
-import Filters from './components/Filters';
-import PokemonList from './components/PokemonList';
+import {Route, Switch} from 'react-router-dom';
+import findAllPokemons from './service/fetch';
+//import { fetchSpecie } from './service/fetchSpecie';
+import Header from './components/Header';
+import Home from './components/Home';
+import PokeDetail from './components/PokeDetail';
+import Footer from './components/Footer';
 import './styles/App.scss';
 
 class App extends React.Component {
@@ -11,40 +15,26 @@ class App extends React.Component {
     this.state = {
       pokemons: [],
       searchedName: '',
-      loading: true
+      loading: true,
     }
 
     this.searchName = this.searchName.bind(this);
+    this.notifyPokemonIsLoaded = this.notifyPokemonIsLoaded.bind(this);
   }
 
   componentDidMount() {
     this.getPokemons();
   }
 
+  notifyPokemonIsLoaded(pokemon) {
+    this.setState({
+      pokemons: [...this.state.pokemons, pokemon],
+      loading: false
+    });
+  }
+
   getPokemons() {
-    fetchData()
-    .then(data => {
-      for (let item of data.results) {
-        fetch(item.url)
-          .then(response => response.json())
-          .then(result => {
-            const types = [];
-            for (let item of result.types) {
-              types.push(item.type.name);
-            }
-            const pokemon = {
-              image: result.sprites.front_default,
-              name: result.name,
-              id: result.id,
-              types: types
-            }
-            this.setState({
-              pokemons: [...this.state.pokemons, pokemon],
-              loading: false
-            })
-          })
-      }
-    })
+    findAllPokemons(this.notifyPokemonIsLoaded);
   }
 
   searchName(event) {
@@ -57,20 +47,24 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <header className="app__header">
-          <h1 className="header-title">Pokedex</h1>
-          <Filters searchName={this.searchName}/>
-        </header>
-        <main className="app__main">
-          <PokemonList
-            pokemons={this.state.pokemons}
-            searchedName={this.state.searchedName}
-            loading={this.state.loading}
-          />
-        </main>
-        <footer className="app__footer">
-          <p className="footer-text">Developed by <a className="footer-github" href="https://github.com/alexandrajaramz" target="_blank" rel="noopener noreferrer">Alexandra Jara</a> &copy; 2019</p>
-        </footer>
+        <Header />
+        <Switch>
+          <Route exact path="/" render={() =>
+            <Home
+              searchName={this.searchName}
+              pokemons={this.state.pokemons}
+              searchedName={this.state.searchedName}
+              loading={this.state.loading}
+            />
+          } />
+          <Route path="/pokemon/:name" render={(routerProps) =>
+            <PokeDetail
+              routerProps={routerProps}
+              pokemons={this.state.pokemons}
+            />
+          } />
+        </Switch>
+        <Footer />
       </div>
     );
   }
