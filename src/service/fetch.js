@@ -1,4 +1,4 @@
-const ENDPOINT = 'https://pokeapi.co/api/v2/pokemon/?limit=25';
+const ENDPOINT = "https://pokeapi.co/api/v2/pokemon/?limit=25";
 
 function parsePokemon(result) {
   const types = result.types.map(item => item.type.name);
@@ -22,23 +22,29 @@ function parsePokemon(result) {
     types,
     height: result.height,
     weight: result.weight,
-    abilities,
+    abilities
   };
   return pokemon;
 }
 
-const findDetailForSinglePokemon = (item, notify) => fetch(item.url)
-  .then(response => response.json())
-  .then((result) => {
-    const pokemon = parsePokemon(result);
-    notify(pokemon);
-    return pokemon;
-  });
+const findDetailForSinglePokemon = (item, notify) =>
+  fetch(item.url)
+    .then(response => response.json())
+    .then(result => {
+      const pokemon = parsePokemon(result);
+      notify(pokemon);
+      return pokemon;
+    });
 
-const findAllPokemons = notifyLoadedPokemon => fetch(ENDPOINT)
-  .then(response => response.json())
-  .then(data => Promise.all(data.results.map(
-    item => findDetailForSinglePokemon(item, notifyLoadedPokemon),
-  )));
+const findAllPokemons = notifyLoadedPokemon =>
+  fetch(ENDPOINT)
+    .then(response => response.json())
+    .then(data =>
+      Promise.all(
+        data.results.map(item =>
+          findDetailForSinglePokemon(item, notifyLoadedPokemon)
+        )
+      )
+    );
 
 export default findAllPokemons;
