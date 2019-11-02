@@ -25,9 +25,13 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 ### Development
 
+#### Code style
 This project uses [eslint](https://eslint.org/) to ensure the code follows the defined codestyle. To do so, you just need to execute
 `npm run lint`.
 In case you find errors after the execution, you could give a try to `npm run fixLint` to try to fix found errors :).
+
+#### Automated tests
+This project includes some automated tests. To run them you just need to execute `npm test`.
 
 ### ⚡️ Have fun!
 <img src="./src/images/pikachu.gif" alt="Happy Pikachu :D" width="300px">

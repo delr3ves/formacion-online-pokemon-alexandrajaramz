@@ -1,12 +1,12 @@
-import React from 'react';
-import {Route, Switch} from 'react-router-dom';
-import findAllPokemons from './service/fetch';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import findAllPokemons from "./service/fetch";
 //import { fetchSpecie } from './service/fetchSpecie';
-import Header from './components/Header';
-import Home from './components/Home';
-import PokeDetail from './components/PokeDetail';
-import Footer from './components/Footer';
-import './styles/App.scss';
+import Header from "./components/Header";
+import Home from "./components/Home";
+import PokeDetail from "./components/PokeDetail";
+import Footer from "./components/Footer";
+import "./styles/App.scss";
 
 class App extends React.Component {
   constructor(props) {
@@ -14,8 +14,8 @@ class App extends React.Component {
 
     this.state = {
       pokemons: [],
-      searchedName: '',
-      loading: true,
+      searchedName: "",
+      loading: true
     };
 
     this.searchName = this.searchName.bind(this);
@@ -53,20 +53,27 @@ class App extends React.Component {
       <div className="app">
         <Header />
         <Switch>
-          <Route exact path="/" render={() =>
-            <Home
-              searchName={this.searchName}
-              pokemons={this.state.pokemons}
-              searchedName={this.state.searchedName}
-              loading={this.state.loading}
-            />
-          } />
-          <Route path="/pokemon/:name" render={(routerProps) =>
-            <PokeDetail
-              routerProps={routerProps}
-              pokemons={this.state.pokemons}
-            />
-          } />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Home
+                searchName={this.searchName}
+                pokemons={this.state.pokemons}
+                searchedName={this.state.searchedName}
+                loading={this.state.loading}
+              />
+            )}
+          />
+          <Route
+            path="/pokemon/:name"
+            render={routerProps => (
+              <PokeDetail
+                routerProps={routerProps}
+                pokemons={this.state.pokemons}
+              />
+            )}
+          />
         </Switch>
         <Footer />
       </div>

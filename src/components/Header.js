@@ -1,5 +1,5 @@
-import React from 'react';
-import '../styles/Header.scss';
+import React from "react";
+import "../styles/Header.scss";
 
 const Header = () => {
   return (
@@ -7,6 +7,6 @@ const Header = () => {
       <h1 className="header-title">Pokedex</h1>
     </header>
   );
-}
-  
+};
+
 export default Header;
