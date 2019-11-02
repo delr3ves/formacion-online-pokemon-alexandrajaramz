@@ -39,9 +39,6 @@ const findAllPokemons = notifyLoadedPokemon => fetch(ENDPOINT)
   .then(response => response.json())
   .then(data => Promise.all(data.results.map(
     item => findDetailForSinglePokemon(item, notifyLoadedPokemon),
-  )))
-  .then(unsortedPokemons => (
-    unsortedPokemons.sort((a, b) => parseFloat(a.id) - parseFloat(b.id))
-  ));
+  )));
 
 export default findAllPokemons;
