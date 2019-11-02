@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import PokemonCard from "./PokemonCard";
 import "../styles/PokemonList.scss";
 
@@ -37,6 +38,13 @@ const PokemonList = props => {
       })}
     </ul>
   );
+};
+
+PokemonList.propTypes = {
+  pokemons: PropTypes.array,
+  searchedName: PropTypes.string,
+  loading: PropTypes.bool,
+  searchPokemon: PropTypes.object
 };
 
 export default PokemonList;

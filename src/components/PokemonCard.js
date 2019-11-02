@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "../styles/PokemonCard.scss";
 
@@ -28,6 +29,13 @@ const PokemonCard = props => {
       </Link>
     </li>
   );
+};
+
+PokemonCard.propTypes = {
+  name: PropTypes.string,
+  image: PropTypes.string,
+  types: PropTypes.array,
+  id: PropTypes.number
 };
 
 export default PokemonCard;

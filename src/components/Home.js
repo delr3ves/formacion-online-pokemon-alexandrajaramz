@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Filters from "./Filters";
 import PokemonList from "./PokemonList";
 import SearchPokemon from "../core/SearchPokemon";
@@ -19,4 +20,10 @@ const Home = props => {
   );
 };
 
+Home.propTypes = {
+  searchName: PropTypes.func,
+  pokemons: PropTypes.array,
+  searchedName: PropTypes.string,
+  loading: PropTypes.bool
+};
 export default Home;

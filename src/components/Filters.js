@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "../styles/Filters.scss";
 
 const Filters = props => {
@@ -16,6 +17,10 @@ const Filters = props => {
       </label>
     </form>
   );
+};
+
+Filters.propTypes = {
+  searchName: PropTypes.func
 };
 
 export default Filters;
